@@ -7,6 +7,7 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
+  - serverless-reqvalidator-plugin
 
 #frameworkVersion: '2'
 
@@ -84,7 +85,7 @@ functions:
           cors: true
           authorizer: Auth
           request:
-            schema:
+            schemas:
               application/json: ${file(schemas/create-todo-model.json)}
     iamRoleStatements:
       - Effect: Allow
@@ -115,7 +116,7 @@ functions:
           cors: true
           authorizer: Auth
           request:
-            schema:
+            schemas:
               application/json: ${file(schemas/update-todo-model.json)}
     iamRoleStatements:
       - Effect: Allow
